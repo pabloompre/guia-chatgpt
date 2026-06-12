@@ -1,0 +1,2979 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>ChatGPT para Emprendedores: Automatizá tu Negocio en 7 Días</title>
+  <style>
+/* COCO GO Brand + Tema ChatGPT Emprendedores */
+:root {
+  --brand-bg: #0B0F1A;
+  --brand-surface: #141B2D;
+  --brand-surface2: #1C2640;
+  --brand-text: #F0F4FC;
+  --brand-muted: #94A3B8;
+  --brand-coral: #FF6B4A;
+  --brand-coral-glow: rgba(255, 107, 74, 0.35);
+  --theme: #10A37F;
+  --theme-light: #1ED9A0;
+  --theme-glow: rgba(16, 163, 127, 0.25);
+  --success: #34D399;
+  --warn: #FBBF24;
+  --border: #2A3655;
+  --radius: 16px;
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --brand-h: 52px;
+  --compact-h: 0px;
+  --journey-h: 88px;
+  --page-pad: max(1.25rem, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--brand-bg);
+  color: var(--brand-text);
+  line-height: 1.65;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, var(--theme-glow), transparent 40%),
+    radial-gradient(circle at 85% 80%, var(--brand-coral-glow), transparent 35%);
+  pointer-events: none;
+  z-index: 0;
+  animation: bg-shift 12s ease-in-out infinite alternate;
+}
+
+@keyframes bg-shift {
+  0% { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.05); }
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Cabecera fija opaca (sin transparencias) ── */
+.brand-bar {
+  position: sticky;
+  top: 0;
+  z-index: 201;
+  background: var(--brand-bg);
+  border-bottom: none;
+  box-shadow: 0 2px 0 var(--brand-bg);
+}
+
+.brand-bar > .container,
+.journey-sticky > .container {
+  padding-left: max(1.35rem, calc(env(safe-area-inset-left, 0px) + 0.5rem));
+  padding-right: max(1.35rem, calc(env(safe-area-inset-right, 0px) + 0.5rem));
+}
+
+.brand-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  padding: 0.7rem 0;
+  min-height: var(--brand-h);
+}
+
+.brand-logo { flex-shrink: 1; min-width: 0; }
+
+.brand-logo,
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-logo {
+  justify-content: center;
+  margin-bottom: 0.35rem;
+}
+
+.logo-mark {
+  flex-shrink: 0;
+  display: block;
+  filter:
+    drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35))
+    drop-shadow(0 4px 14px rgba(255, 107, 74, 0.38));
+}
+
+.logo-mark--sm {
+  filter:
+    drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3))
+    drop-shadow(0 3px 10px rgba(255, 107, 74, 0.32));
+}
+
+.logo-wordmark {
+  display: flex;
+  align-items: center;
+  gap: 0.32rem;
+  line-height: 1;
+}
+
+.logo-wordmark--sm {
+  gap: 0.28rem;
+}
+
+.logo-coco {
+  font-weight: 700;
+  font-size: 0.94rem;
+  letter-spacing: 0.1em;
+  color: var(--brand-coral);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.logo-wordmark--sm .logo-coco {
+  font-size: 0.82rem;
+  letter-spacing: 0.09em;
+}
+
+.logo-go {
+  font-weight: 800;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  color: #fff;
+  background: linear-gradient(145deg, #ff7a5c 0%, var(--brand-coral) 45%, #e04a2f 100%);
+  padding: 0.22rem 0.52rem 0.24rem;
+  border-radius: 999px;
+  line-height: 1;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 2px 10px rgba(255, 107, 74, 0.45);
+}
+
+.logo-wordmark--sm .logo-go {
+  font-size: 0.6rem;
+  padding: 0.18rem 0.42rem 0.2rem;
+  letter-spacing: 0.14em;
+}
+
+.brand-theme-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(16, 163, 127, 0.15);
+  border: 1px solid rgba(16, 163, 127, 0.4);
+  color: var(--theme-light);
+  white-space: nowrap;
+}
+
+.btn-pdf {
+  flex-shrink: 0;
+  margin-right: 0.1rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--brand-surface2);
+  color: var(--brand-muted);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.hero-compact {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 1.1rem;
+  transition: max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.35s ease,
+              padding 0.45s ease;
+}
+
+.hero-compact-line {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.68rem;
+  color: var(--brand-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  padding-bottom: 0.55rem;
+}
+
+.hero-compact-line .hc-badge {
+  flex-shrink: 0;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--theme-light);
+  font-size: 0.62rem;
+}
+
+.hero-compact-line .hc-sep {
+  flex-shrink: 0;
+  opacity: 0.35;
+}
+
+.hero-compact-line .hc-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
+  color: var(--brand-text);
+}
+
+.hero-compact-line .hc-stats {
+  flex-shrink: 0;
+  font-size: 0.62rem;
+  color: var(--theme-light);
+}
+
+body.hero-collapsed {
+  --compact-h: 34px;
+}
+
+body.hero-collapsed .hero-compact {
+  max-height: 40px;
+  opacity: 1;
+}
+
+body.hero-collapsed .hero {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* ── Hero expandido ── */
+.hero {
+  position: relative;
+  padding: 2.5rem 0 2rem;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.4s ease,
+              padding 0.5s ease;
+  max-height: 600px;
+  opacity: 1;
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: float-orb 8s ease-in-out infinite;
+}
+
+.hero-orb-1 {
+  width: 200px; height: 200px;
+  background: var(--theme);
+  opacity: 0.2;
+  top: -40px; right: -30px;
+}
+
+.hero-orb-2 {
+  width: 140px; height: 140px;
+  background: var(--brand-coral);
+  opacity: 0.15;
+  bottom: 0; left: -20px;
+  animation-delay: -3s;
+}
+
+@keyframes float-orb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-12px, 18px) scale(1.08); }
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(16, 163, 127, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 163, 127, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(to bottom, black 30%, transparent);
+}
+
+.hero-content { position: relative; z-index: 2; }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--theme-light);
+  background: rgba(16, 163, 127, 0.12);
+  border: 1px solid rgba(16, 163, 127, 0.35);
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+  animation: badge-pulse 3s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 163, 127, 0.3); }
+  50% { box-shadow: 0 0 0 8px rgba(16, 163, 127, 0); }
+}
+
+.hero h1 {
+  font-size: clamp(1.55rem, 5.5vw, 2.35rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 0.85rem;
+  background: linear-gradient(135deg, var(--brand-text) 0%, var(--theme-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle { color: var(--brand-muted); font-size: 1.05rem; max-width: 560px; }
+
+.hero-stats {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background: rgba(20, 27, 45, 0.8);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.75rem 1.1rem;
+  min-width: 90px;
+  animation: stat-in 0.6s ease backwards;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0.1s; }
+.stat-card:nth-child(2) { animation-delay: 0.2s; }
+.stat-card:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes stat-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.stat-card strong { display: block; font-size: 1.4rem; color: var(--theme-light); }
+.stat-card span { font-size: 0.75rem; color: var(--brand-muted); }
+
+/* Progreso + días — pega debajo de marca, tapa el scroll */
+.journey-sticky {
+  position: sticky;
+  top: var(--brand-offset, 52px);
+  z-index: 200;
+  background: var(--brand-bg);
+  padding: 0.65rem 0 0.35rem;
+  margin-top: -1px;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.55);
+}
+
+.journey-sticky::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-top: 0.45rem;
+  background: linear-gradient(90deg, transparent, rgba(16, 163, 127, 0.45), rgba(255, 107, 74, 0.35), transparent);
+}
+
+.progress-track {
+  height: 6px;
+  background: rgba(28, 38, 64, 0.8);
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--theme), var(--theme-light), var(--brand-coral));
+  background-size: 200% 100%;
+  border-radius: 999px;
+  transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: progress-shine 3s linear infinite;
+  box-shadow: 0 0 12px var(--theme-glow);
+}
+
+@keyframes progress-shine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.progress-label {
+  font-size: 0.72rem;
+  color: var(--brand-muted);
+  margin-top: 0.35rem;
+  letter-spacing: 0.02em;
+}
+
+/* Day nav */
+.day-nav {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.85rem 0 0.65rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+}
+
+.day-nav::-webkit-scrollbar { display: none; }
+
+.day-pill {
+  flex-shrink: 0;
+  border: 1px solid rgba(42, 54, 85, 0.8);
+  background: rgba(20, 27, 45, 0.7);
+  color: var(--brand-muted);
+  padding: 0.5rem 0.95rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34, 1.2, 0.64, 1);
+  touch-action: manipulation;
+  scroll-snap-align: start;
+}
+
+.day-pill:hover { transform: translateY(-2px); border-color: var(--theme); color: var(--brand-text); }
+
+.day-pill.active {
+  background: linear-gradient(135deg, var(--theme), #0d8a6a);
+  border-color: var(--theme-light);
+  color: #fff;
+  box-shadow: 0 4px 20px var(--theme-glow);
+  transform: scale(1.04);
+}
+
+.day-pill.bonus.active {
+  background: linear-gradient(135deg, var(--brand-coral), #e85a3a);
+  border-color: var(--brand-coral);
+}
+
+/* Paneles — navegación CSS con radio buttons (sin JS, sin :has — funciona en iPhone) */
+.tab-input {
+  position: fixed;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.day-panel,
+[data-panel] {
+  display: none;
+  padding-bottom: 2.5rem;
+  padding-top: 1.25rem;
+}
+
+#tab-glosario:checked ~ main .day-panel[data-panel="glosario"],
+#tab-1:checked ~ main .day-panel[data-panel="1"],
+#tab-2:checked ~ main .day-panel[data-panel="2"],
+#tab-3:checked ~ main .day-panel[data-panel="3"],
+#tab-4:checked ~ main .day-panel[data-panel="4"],
+#tab-5:checked ~ main .day-panel[data-panel="5"],
+#tab-6:checked ~ main .day-panel[data-panel="6"],
+#tab-7:checked ~ main .day-panel[data-panel="7"],
+#tab-bonus:checked ~ main .day-panel[data-panel="bonus"] {
+  display: block;
+  animation: panel-in 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.day-panel.active,
+[data-panel].active {
+  display: block;
+  animation: panel-in 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Píldoras activas sin JS */
+#tab-glosario:checked ~ .journey-sticky label.day-pill[for="tab-glosario"],
+#tab-1:checked ~ .journey-sticky label.day-pill[for="tab-1"],
+#tab-2:checked ~ .journey-sticky label.day-pill[for="tab-2"],
+#tab-3:checked ~ .journey-sticky label.day-pill[for="tab-3"],
+#tab-4:checked ~ .journey-sticky label.day-pill[for="tab-4"],
+#tab-5:checked ~ .journey-sticky label.day-pill[for="tab-5"],
+#tab-6:checked ~ .journey-sticky label.day-pill[for="tab-6"],
+#tab-7:checked ~ .journey-sticky label.day-pill[for="tab-7"],
+#tab-bonus:checked ~ .journey-sticky label.day-pill.bonus[for="tab-bonus"] {
+  background: linear-gradient(135deg, var(--theme), #0d8a6a);
+  border-color: var(--theme-light);
+  color: #fff;
+  box-shadow: 0 4px 20px var(--theme-glow);
+  transform: scale(1.04);
+}
+
+#tab-bonus:checked ~ .journey-sticky label.day-pill.bonus[for="tab-bonus"] {
+  background: linear-gradient(135deg, var(--brand-coral), #e85a3a);
+  border-color: var(--brand-coral);
+}
+
+label.day-pill {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.mobile-start-hint {
+  background: rgba(16, 163, 127, 0.1);
+  border-bottom: 1px solid rgba(16, 163, 127, 0.25);
+  padding: 0.6rem 0;
+  text-align: center;
+  font-size: 0.84rem;
+  color: var(--brand-muted);
+  position: relative;
+  z-index: 190;
+}
+
+.mobile-start-hint strong { color: var(--theme-light); }
+
+@media (min-width: 900px) {
+  .mobile-start-hint { display: none; }
+}
+
+@keyframes panel-in {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.day-header { margin-bottom: 1.5rem; margin-top: 0.5rem; }
+
+.day-num {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--theme-light);
+  background: rgba(16, 163, 127, 0.12);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+}
+
+.day-header h2 { font-size: 1.5rem; margin-top: 0.65rem; font-weight: 700; }
+
+.day-intro {
+  color: var(--brand-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  padding-left: 0.85rem;
+  border-left: 3px solid var(--theme);
+}
+
+.day-intro em { color: var(--brand-text); font-style: italic; }
+.day-intro strong { color: var(--theme-light); font-weight: 600; }
+
+/* Cards */
+.card {
+  background: var(--brand-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.25rem;
+  margin-bottom: 1.65rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover { border-color: rgba(16, 163, 127, 0.35); }
+
+.card.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card h3 { font-size: 0.92rem; margin-bottom: 0.65rem; font-weight: 700; }
+
+.card.objetivo { border-left: 4px solid var(--theme-light); }
+.card.tip { border-left: 4px solid var(--warn); background: rgba(251, 191, 36, 0.05); }
+.card.tip h3 { color: var(--warn); }
+
+.card ol, .card ul { padding-left: 1.2rem; }
+.card li { margin-bottom: 0.5rem; color: var(--brand-muted); }
+.card li strong { color: var(--brand-text); font-weight: 600; }
+.card li em { color: var(--brand-text); font-style: italic; }
+.card p strong { color: var(--brand-text); font-weight: 600; }
+.card p em { color: var(--theme-light); font-style: italic; }
+
+/* Prompt cards — más espacio para etiqueta */
+.card.prompt-box {
+  margin-top: 0.75rem;
+  padding-top: 1.5rem;
+}
+
+.prompt-box + .prompt-box,
+.card + .card.prompt-box {
+  margin-top: 0.5rem;
+}
+
+/* Glosario — carrusel horizontal (1 tarjeta visible en móvil) */
+.glossary-section { margin-bottom: 2rem; }
+
+.glossary-hint {
+  font-size: 0.85rem;
+  color: var(--brand-muted);
+  margin-bottom: 1rem;
+}
+
+.glossary-hint strong { color: var(--theme-light); }
+
+.glossary-search-wrap {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.glossary-search-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand-muted);
+  margin-bottom: 0.4rem;
+}
+
+.glossary-search {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--brand-surface);
+  color: var(--brand-text);
+  font-size: 0.95rem;
+  font-family: var(--font);
+  -webkit-appearance: none;
+}
+
+.glossary-search::placeholder { color: var(--brand-muted); }
+
+.glossary-search:focus {
+  outline: none;
+  border-color: var(--theme);
+  box-shadow: 0 0 0 3px var(--theme-glow);
+}
+
+.concept-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.concept-list .concept-card.is-hidden { display: none; }
+
+.glossary-empty {
+  text-align: center;
+  color: var(--brand-muted);
+  font-size: 0.88rem;
+  padding: 1.25rem 0;
+}
+
+details.concept-card {
+  background: var(--brand-surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.35s ease, box-shadow 0.4s ease;
+}
+
+details.concept-card[open] {
+  border-color: rgba(16, 163, 127, 0.55);
+  box-shadow: 0 6px 28px var(--theme-glow);
+}
+
+details.concept-card summary {
+  padding: 0.95rem 1.15rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+details.concept-card summary::-webkit-details-marker { display: none; }
+
+details.concept-card summary::after {
+  content: "+";
+  color: var(--theme-light);
+  font-size: 1.2rem;
+  font-weight: 300;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+details.concept-card[open] summary::after { transform: rotate(45deg); }
+
+.concept-card-body {
+  padding: 0 1.15rem 1.1rem;
+  color: var(--brand-muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  border-top: 1px solid rgba(42, 54, 85, 0.6);
+  animation: concept-slide 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes concept-slide {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.concept-card-body strong {
+  color: var(--theme-light);
+  font-weight: 600;
+}
+
+.concept-card-body em {
+  color: var(--brand-text);
+  font-style: italic;
+}
+
+/* Ejemplos desplegables */
+details.example {
+  background: var(--brand-surface2);
+  border: 1px dashed rgba(16, 163, 127, 0.35);
+  border-radius: 12px;
+  margin: 0.85rem 0 1.25rem;
+}
+
+details.example summary {
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--theme-light);
+  cursor: pointer;
+  list-style: none;
+  touch-action: manipulation;
+}
+
+details.example summary::-webkit-details-marker { display: none; }
+
+.example-body {
+  padding: 0 1rem 1rem;
+  font-size: 0.88rem;
+  color: var(--brand-muted);
+}
+
+.example-body strong { color: var(--brand-text); font-weight: 600; }
+.example-body em { color: var(--theme-light); font-style: italic; }
+
+.example-body .chat-user,
+.example-body .chat-ai {
+  padding: 0.65rem 0.9rem;
+  border-radius: 12px;
+  margin: 0.4rem 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.chat-user {
+  background: rgba(255, 107, 74, 0.12);
+  border-left: 3px solid var(--brand-coral);
+  margin-left: 1rem;
+}
+
+.chat-ai {
+  background: rgba(16, 163, 127, 0.1);
+  border-left: 3px solid var(--theme);
+  margin-right: 1rem;
+}
+
+.chat-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+  margin-bottom: 0.25rem;
+}
+
+/* Prompt boxes */
+.prompt-box { position: relative; }
+
+.prompt-box::before {
+  content: "💬 Prompt";
+  position: absolute;
+  top: -0.65rem;
+  left: 1rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--theme);
+  color: #fff;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+.prompt-text {
+  background: #0a1219;
+  border: 1px solid rgba(16, 163, 127, 0.3);
+  border-radius: 12px;
+  padding: 1.1rem 1rem 0.9rem;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #b8d4c8;
+  margin: 0.5rem 0 0.85rem;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+html:not(.js-ready) .btn-copy::after {
+  content: " (o mantené presionado el texto de arriba)";
+  font-weight: 400;
+  font-size: 0.72rem;
+  opacity: 0.85;
+}
+
+.card-action {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.25rem;
+}
+
+.btn-copy {
+  background: linear-gradient(135deg, var(--theme), #0d8a6a);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px var(--theme-glow);
+  touch-action: manipulation;
+  margin-left: auto;
+  display: block;
+}
+
+.card > .btn-copy,
+.prompt-box > .btn-copy {
+  margin-left: auto;
+}
+
+.btn-copy:hover { transform: translateY(-2px); box-shadow: 0 6px 24px var(--theme-glow); }
+.btn-copy.copied { background: var(--success); }
+
+.check-complete {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  background: rgba(16, 163, 127, 0.08);
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+  touch-action: manipulation;
+}
+
+.check-complete:has(input:checked) {
+  background: rgba(52, 211, 153, 0.15);
+  animation: check-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes check-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.check-complete input {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: var(--theme);
+}
+
+.check-complete input:checked + span { color: var(--success); }
+
+.bonus-category {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brand-coral);
+  margin: 2rem 0 1rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Cross-sell / contenido relacionado */
+.related-content {
+  margin-top: 2rem;
+  padding: 1.35rem 1.25rem;
+  background: linear-gradient(135deg, rgba(20, 27, 45, 0.9), rgba(28, 38, 64, 0.6));
+  border: 1px solid rgba(16, 163, 127, 0.25);
+  border-radius: var(--radius);
+}
+
+.related-content h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
+  color: var(--theme-light);
+}
+
+.related-content > p {
+  font-size: 0.82rem;
+  color: var(--brand-muted);
+  margin-bottom: 1rem;
+}
+
+.related-grid {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.related-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  background: var(--brand-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.25s, transform 0.25s;
+}
+
+.related-card:hover {
+  border-color: var(--theme);
+  transform: translateY(-2px);
+}
+
+.related-card.coming-soon {
+  opacity: 0.75;
+  cursor: default;
+  pointer-events: none;
+}
+
+.related-icon {
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
+
+.related-card strong {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--brand-text);
+}
+
+.related-card span {
+  font-size: 0.75rem;
+  color: var(--brand-muted);
+}
+
+.related-tag {
+  margin-left: auto;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--brand-coral);
+  background: rgba(255, 107, 74, 0.12);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 0 3rem;
+  margin-top: 1.5rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-brand { font-weight: 800; color: var(--brand-coral); }
+
+.footer-support {
+  font-size: 0.88rem;
+  color: var(--brand-muted);
+  margin-top: 0.25rem;
+}
+
+.footer-support a {
+  color: var(--theme-light);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-support a:hover { text-decoration: underline; }
+
+.footer p { color: var(--brand-muted); font-size: 0.82rem; margin-top: 0.35rem; }
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 1.25rem 0 1rem;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--brand-surface);
+  color: var(--brand-text);
+  text-decoration: none;
+  transition: border-color 0.25s, transform 0.25s, background 0.25s, color 0.25s;
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+}
+
+.social-ig:hover {
+  border-color: #E1306C;
+  background: rgba(225, 48, 108, 0.15);
+  color: #E1306C;
+}
+
+.social-x:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--success);
+  color: #0B0F1A;
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  opacity: 0;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 300;
+  pointer-events: none;
+  box-shadow: 0 8px 32px rgba(52, 211, 153, 0.4);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.typing-dots {
+  display: inline-flex;
+  gap: 4px;
+  padding: 0.5rem 0;
+}
+
+.typing-dots span {
+  width: 6px; height: 6px;
+  background: var(--theme-light);
+  border-radius: 50%;
+  animation: typing 1.2s ease-in-out infinite;
+}
+
+.typing-dots span:nth-child(2) { animation-delay: 0.15s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes typing {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-6px); opacity: 1; }
+}
+
+/* Puerta de acceso (token en enlace de compra) */
+.access-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(1.5rem, env(safe-area-inset-top)) max(1.25rem, env(safe-area-inset-right)) max(1.5rem, env(safe-area-inset-bottom)) max(1.25rem, env(safe-area-inset-left));
+  background: rgba(11, 15, 26, 0.97);
+}
+
+.access-gate[hidden] { display: none !important; }
+
+.access-gate-card {
+  width: min(100%, 400px);
+  background: var(--brand-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.35rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.access-gate-card h2 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.access-gate-card p {
+  font-size: 0.88rem;
+  color: var(--brand-muted);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.access-gate-card input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--brand-bg);
+  color: var(--brand-text);
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  text-align: center;
+  letter-spacing: 0.12em;
+}
+
+.access-gate-card button {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--theme), #0d8a6a);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.access-gate-error {
+  color: #f87171;
+  font-size: 0.82rem;
+  margin-top: 0.65rem;
+  min-height: 1.2em;
+}
+
+body.access-locked > *:not(.access-gate) { display: none !important; }
+
+/* PRINT / PDF */
+@media print {
+  @page { margin: 14mm 12mm; size: A4; }
+
+  body::before,
+  .access-gate,
+  .brand-bar,
+  .journey-sticky,
+  .mobile-start-hint,
+  .day-nav,
+  .btn-copy,
+  .btn-pdf,
+  .toast,
+  .check-complete input,
+  .footer-social,
+  .related-content,
+  .glossary-search-wrap,
+  .tab-input { display: none !important; }
+
+  body {
+    background: #fff !important;
+    color: #1a1a2e !important;
+    font-size: 10.5pt;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .container { max-width: 100% !important; padding: 0 !important; }
+
+  .hero {
+    padding: 0.5rem 0 1rem !important;
+    page-break-after: avoid;
+    max-height: none !important;
+    opacity: 1 !important;
+    display: block !important;
+  }
+
+  .hero h1 {
+    -webkit-text-fill-color: #1a1a2e !important;
+    color: #1a1a2e !important;
+    font-size: 17pt !important;
+  }
+
+  main .day-panel,
+  [data-panel] {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    page-break-before: always;
+    break-before: page;
+    padding-top: 0.5rem !important;
+  }
+
+  main .day-panel:first-of-type,
+  [data-panel="glosario"] {
+    page-break-before: avoid;
+    break-before: avoid;
+  }
+
+  .card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    background: #f9fafb !important;
+    margin-bottom: 0.65rem !important;
+  }
+
+  .prompt-text {
+    background: #f0f4f8 !important;
+    color: #222 !important;
+    border: 1px solid #10A37F !important;
+    font-size: 8.5pt !important;
+    white-space: pre-wrap !important;
+    overflow: visible !important;
+  }
+
+  details.concept-card,
+  details.example {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  details.concept-card[open] .concept-card-body,
+  details.example[open] .example-body {
+    display: block !important;
+  }
+
+  details.concept-card,
+  details.example {
+    border: 1px solid #10A37F !important;
+  }
+
+  details.concept-card summary::after,
+  details.example summary::after { display: none; }
+
+  .concept-list .concept-card { display: block !important; }
+  .concept-list .concept-card.is-hidden { display: none !important; }
+
+  .footer { color: #666 !important; }
+}
+
+body.is-printing main .day-panel,
+body.is-printing [data-panel] {
+  display: block !important;
+}
+
+/* Hub (index) — menú de páginas para iPhone sin JavaScript */
+body.hub-page .journey-sticky,
+body.hub-page .ios-open-banner,
+body.hub-page #btn-print-pdf { display: none !important; }
+
+.hub-hero {
+  padding: 1.75rem 0 1.25rem;
+  text-align: center;
+}
+
+.hub-hero h1 {
+  font-size: 1.55rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 0.5rem;
+}
+
+.hub-hero p {
+  color: var(--brand-muted);
+  font-size: 0.95rem;
+}
+
+.hub-grid {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.5rem 0 2rem;
+}
+
+.hub-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+  background: var(--brand-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: var(--brand-text);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hub-card:hover,
+.hub-card:active {
+  border-color: var(--theme);
+  transform: translateY(-2px);
+}
+
+.hub-card-num {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 0.8rem;
+  background: rgba(16, 163, 127, 0.15);
+  color: var(--theme-light);
+}
+
+.hub-card.bonus .hub-card-num {
+  background: rgba(255, 107, 74, 0.15);
+  color: var(--brand-coral);
+}
+
+.hub-card-text strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.15rem;
+}
+
+.hub-card-text span {
+  font-size: 0.82rem;
+  color: var(--brand-muted);
+}
+
+.hub-card-arrow {
+  margin-left: auto;
+  color: var(--brand-muted);
+  font-size: 1.1rem;
+}
+
+.hub-note {
+  font-size: 0.82rem;
+  color: var(--brand-muted);
+  text-align: center;
+  padding: 0 0.5rem 1.5rem;
+  line-height: 1.5;
+}
+
+.hub-note a { color: var(--theme-light); }
+
+/* Páginas individuales (sin JS de paneles) */
+body.page-single .day-panel,
+body.page-single [data-panel] {
+  display: block !important;
+  animation: none;
+}
+
+body.page-single .hero,
+body.page-single .journey-sticky,
+body.page-single .ios-open-banner,
+body.page-single .hero-compact { display: none !important; }
+
+.page-top {
+  padding: 0.75rem 0 0.5rem;
+}
+
+.page-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--theme-light);
+  text-decoration: none;
+  margin-bottom: 0.75rem;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.page-nav {
+  display: flex;
+  gap: 0.45rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 0.65rem;
+  margin-bottom: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.page-nav::-webkit-scrollbar { display: none; }
+
+.page-nav a {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--brand-surface);
+  color: var(--brand-muted);
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.page-nav a.active {
+  background: linear-gradient(135deg, var(--theme), #0d8a6a);
+  border-color: var(--theme-light);
+  color: #fff;
+}
+
+.page-nav a.bonus.active {
+  background: linear-gradient(135deg, var(--brand-coral), #e85a3a);
+  border-color: var(--brand-coral);
+}
+
+.page-linear-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 2rem 0 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.page-linear-nav a {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--theme-light);
+  text-decoration: none;
+}
+
+.page-linear-nav .page-next { margin-left: auto; }
+
+@media (max-width: 480px) {
+  :root { --brand-h: 48px; }
+  .hero h1 { font-size: 1.45rem; }
+  .card { padding: 1rem; margin-bottom: 1.75rem; }
+  .card.prompt-box { padding-top: 1.65rem; margin-bottom: 2rem; }
+  .brand-theme-badge { display: none; }
+  .hero-compact-line { font-size: 0.62rem; }
+  .hero-compact-line .hc-stats { display: none; }
+  .day-nav { gap: 0.4rem; }
+  .hub-hero h1 { font-size: 1.35rem; }
+}
+</style>
+</head>
+<body>
+
+  <div class="access-gate" id="access-gate" hidden>
+    <div class="access-gate-card">
+      <h2>COCO GO — Guía para compradores</h2>
+      <p>Ingresá el código de acceso que recibiste al comprar. Si no lo tenés, escribinos a cocogo.hola@gmail.com</p>
+      <input type="text" id="access-code-input" placeholder="Código de acceso" autocomplete="off" autocapitalize="characters" />
+      <button type="button" id="access-code-submit">Entrar a la guía</button>
+      <p class="access-gate-error" id="access-gate-error" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <!-- Navegación sin JavaScript (radio + label — funciona en iPhone vista previa) -->
+  <input type="radio" name="coco-tab" id="tab-glosario" class="tab-input" checked hidden>
+  <input type="radio" name="coco-tab" id="tab-1" class="tab-input" hidden>
+  <input type="radio" name="coco-tab" id="tab-2" class="tab-input" hidden>
+  <input type="radio" name="coco-tab" id="tab-3" class="tab-input" hidden>
+  <input type="radio" name="coco-tab" id="tab-4" class="tab-input" hidden>
+  <input type="radio" name="coco-tab" id="tab-5" class="tab-input" hidden>
+  <input type="radio" name="coco-tab" id="tab-6" class="tab-input" hidden>
+  <input type="radio" name="coco-tab" id="tab-7" class="tab-input" hidden>
+  <input type="radio" name="coco-tab" id="tab-bonus" class="tab-input" hidden>
+
+  <!-- Barra de marca (fija, fondo sólido) -->
+  <div class="brand-bar" id="brand-bar">
+    <div class="container brand-inner">
+      <div class="brand-logo" aria-label="COCO GO">
+        <svg class="logo-mark" width="38" height="38" viewBox="0 0 40 40" aria-hidden="true">
+          <defs>
+            <linearGradient id="cogo-grad" x1="6" y1="2" x2="34" y2="38" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#FF8A6E"/>
+              <stop offset="50%" stop-color="#FF6B4A"/>
+              <stop offset="100%" stop-color="#D93D22"/>
+            </linearGradient>
+            <linearGradient id="cogo-shine" x1="20" y1="2" x2="20" y2="22" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#fff" stop-opacity="0.28"/>
+              <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <rect width="40" height="40" rx="11" fill="url(#cogo-grad)"/>
+          <rect width="40" height="40" rx="11" fill="url(#cogo-shine)"/>
+          <g fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 12 L19 20 L11 28"/>
+            <path d="M19 12 L27 20 L19 28" opacity="0.9"/>
+          </g>
+        </svg>
+        <div class="logo-wordmark">
+          <span class="logo-coco">COCO</span>
+          <span class="logo-go">GO</span>
+        </div>
+      </div>
+      <span class="brand-theme-badge">💬 IA Asistente</span>
+      <button id="btn-print-pdf" class="btn-pdf">Guardar PDF</button>
+    </div>
+    <div class="hero-compact" id="hero-compact" aria-hidden="true">
+      <div class="container hero-compact-line">
+        <span class="hc-badge">Guía interactiva · 7 días</span>
+        <span class="hc-sep">·</span>
+        <span class="hc-title">ChatGPT para Emprendedores: Automatizá tu Negocio en 7 Días</span>
+        <span class="hc-sep">·</span>
+        <span class="hc-stats"><span id="compact-pct">0%</span> · 7 módulos · ~15 min</span>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="mobile-start-hint">
+    <p>Tocá <strong>Glosario</strong> o un <strong>Día</strong> en la barra de abajo del logo.</p>
+  </div>
+
+  <!-- Hero -->
+  <header class="hero" id="inicio">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-grid"></div>
+    <div class="container hero-content">
+      <span class="badge">Guía interactiva · 7 días</span>
+      <h1>ChatGPT para Emprendedores: Automatizá tu Negocio en 7 Días</h1>
+      <p class="subtitle">Sin código. Sin jerga. Con plantillas listas para copiar y pegar.</p>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <strong id="progress-pct">0%</strong>
+          <span>completado</span>
+        </div>
+        <div class="stat-card">
+          <strong>7</strong>
+          <span>módulos</span>
+        </div>
+        <div class="stat-card">
+          <strong>~15 min</strong>
+          <span>por día</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Progreso + días (fijo debajo de marca, fondo sólido) -->
+  <div class="journey-sticky" id="journey-sticky">
+    <div class="container">
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <p class="progress-label"><span id="days-done">0</span> de 7 días completados</p>
+      <nav class="day-nav" aria-label="Secciones">
+        <label class="day-pill" for="tab-glosario">Glosario</label>
+        <label class="day-pill" for="tab-1">Día 1</label>
+        <label class="day-pill" for="tab-2">Día 2</label>
+        <label class="day-pill" for="tab-3">Día 3</label>
+        <label class="day-pill" for="tab-4">Día 4</label>
+        <label class="day-pill" for="tab-5">Día 5</label>
+        <label class="day-pill" for="tab-6">Día 6</label>
+        <label class="day-pill" for="tab-7">Día 7</label>
+        <label class="day-pill bonus" for="tab-bonus">Bonus</label>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- PANEL GLOSARIO -->
+    <!-- ═══════════════════════════════════════ -->
+    <section class="day-panel" id="panel-glosario" data-panel="glosario">
+      <div class="day-header">
+        <span class="day-num">Glosario</span>
+        <h2>21 conceptos clave (sin jerga técnica)</h2>
+      </div>
+      <p class="day-intro">Antes de arrancar los 7 días, repasá estos términos. Si algo no te queda claro, volvé acá cuando lo necesites. Todo explicado para emprendedores de LATAM.</p>
+
+      <div class="glossary-section">
+        <p class="glossary-hint">Tocá un concepto para ver la definición. Usá el buscador para volver rápido a cualquiera de los 21.</p>
+        <label class="glossary-search-wrap" for="glossary-search">
+          <span class="glossary-search-label">Buscar concepto</span>
+          <input type="search" id="glossary-search" class="glossary-search" placeholder="Ej: prompt, CTA, voz de marca…" autocomplete="off" enterkeyhint="search" />
+        </label>
+        <div class="concept-list" id="concept-list" role="list">
+          <details class="concept-card">
+              <summary>ChatGPT</summary>
+              <div class="concept-card-body">
+                <p><strong>ChatGPT</strong> es un asistente de <em>inteligencia artificial</em> que conversa por texto. Lo usás como un chat: le escribís lo que necesitás y te responde en segundos. Podés pedirle que redacte emails, arme calendarios de contenido, responda FAQs o analice ideas de negocio. <em>No reemplaza tu criterio</em> — acelera el trabajo repetitivo.</p>
+              </div>
+            </details>
+          <details class="concept-card">
+              <summary>IA (Inteligencia Artificial)</summary>
+              <div class="concept-card-body">
+                <p><strong>IA</strong> es tecnología que aprende patrones de millones de textos para generar respuestas útiles. Para vos como emprendedor, significa tener un <em>asistente 24/7</em> que redacta, resume, organiza y propone — sin contratar a nadie extra. No necesitás entender cómo funciona por dentro; solo <strong>saber pedirle bien</strong> las cosas.</p>
+              </div>
+            </details>
+          <details class="concept-card">
+              <summary>Prompt</summary>
+              <div class="concept-card-body">
+                <p>Un <strong>prompt</strong> es el mensaje o instrucción que le das a ChatGPT. Es como darle una orden clara a un empleado nuevo: cuanto más <em>contexto</em> (quién sos, qué vendés, qué tono querés), mejor resultado. Ejemplo malo: "escribí un post". Ejemplo bueno: "Soy nutricionista en Buenos Aires, escribí un post de Instagram de 100 palabras sobre desayunos rápidos para mamás ocupadas, tono cercano".</p>
+              </div>
+            </details>
+          <details class="concept-card">
+              <summary>Contexto</summary>
+              <div class="concept-card-body">
+                <p>El <strong>contexto</strong> es toda la información que le das a ChatGPT para que entienda <em>tu situación</em>: negocio, audiencia, objetivo, tono y restricciones. Sin contexto, las respuestas son genéricas. Con buen contexto, parecen hechas por alguien que <strong>conoce tu marca</strong>.</p>
+              </div>
+            </details>
+          <details class="concept-card">
+              <summary>Instrucciones personalizadas</summary>
+              <div class="concept-card-body">
+                <p>Las <strong>instrucciones personalizadas</strong> son un espacio en ChatGPT donde cargás información <em>fija</em> sobre tu negocio: qué hacés, a quién le vendés, cómo hablás. ChatGPT las lee en cada conversación nueva, así <strong>no repetís el contexto</strong> cada vez. Es la configuración más importante del Día 1.</p>
+              </div>
+            </details>
+          <details class="concept-card">
+              <summary>GPT / GPT-4</summary>
+              <div class="concept-card-body">
+                <p><strong>GPT</strong> es el "motor" detrás de ChatGPT. <strong>GPT-4</strong> (y versiones más nuevas) son modelos más capaces: entienden mejor el contexto, escriben con más matices y cometen menos errores. En el plan gratuito usás un modelo básico; con ChatGPT Plus accedés a modelos más potentes. Para empezar, el <em>plan free alcanza</em> perfectamente.</p>
+              </div>
+            </details>
+          <details class="concept-card">
+              <summary>CTA (Call to Action)</summary>
+              <div class="concept-card-body">
+                <p><strong>CTA</strong> significa "llamada a la acción": la frase que le dice al lector <em>qué hacer después</em> de ver tu contenido. Ejemplos: "Escribime por WhatsApp", "Agendá tu consulta gratis", "Comentá si te pasó lo mismo". Sin CTA, tu post educa pero <strong>no genera contacto ni ventas</strong>.</p>
+              </div>
+            </details>
+          <details class="concept-card">
+              <summary>Hook</summary>
+              <div class="concept-card-body">
+                <p>El <strong>hook</strong> es la primera línea de tu publicación — la que <em>frena el scroll</em>. Tiene que generar curiosidad, identificación o sorpresa en menos de 2 segundos. Ejemplo: "Perdí 3 clientes por responder tarde. Esto cambió todo." Un buen hook vale más que <strong>10 párrafos aburridos</strong>.</p>
+              </div>
+            </details>
+          <details class="concept-card">
+              <summary>Lead</summary>
+              <div class="concept-card-body">
+                <p>Un <strong>lead</strong> es una persona interesada en tu producto o servicio que <em>todavía no compró</em>. Puede ser alguien que te escribió por Instagram, dejó su email o pidió un presupuesto. Tu trabajo es nutrirlo con mensajes útiles hasta que esté listo para comprar. ChatGPT te ayuda a redactar esos mensajes <strong>sin sonar robótico</strong>.</p>
+              </div>
+            </details>
+          <details class="concept-card">
+              <summary>Voz de marca</summary>
+              <div class="concept-card-body">
+                <p>La <strong>voz de marca</strong> es cómo suena tu negocio cuando escribe o habla: formal o cercano, técnico o simple, serio o divertido. Definirla evita que ChatGPT te suene como una <em>multinacional genérica</em>. Se define con <strong>3 palabras de tono</strong>, palabras prohibidas y un ejemplo real de cómo escribís vos.</p>
+              </div>
+            </details>
+          <details class="concept-card">
+              <summary>Micronicho</summary>
+              <div class="concept-card-body">
+                <p>Un <strong>micronicho</strong> es un segmento <em>muy específico</em> de mercado. En vez de "coach", sos "coach de productividad para madres emprendedoras en México". Cuanto más específico, mejor responde ChatGPT porque entiende exactamente a quién le hablás. Si tu negocio es generalista, definí al menos tu <strong>cliente ideal más frecuente</strong>.</p>
+              </div>
+            </details>
+          <details class="concept-card">
+              <summary>Token</summary>
+              <div class="concept-card-body">
+                <p>Un <strong>token</strong> es una unidad de texto que ChatGPT procesa (aproximadamente 4 caracteres en español = 1 token). Los planes tienen límites por conversación. Si tu prompt es muy largo, ChatGPT puede <em>"olvidar" el inicio</em>. Solución: empezá conversación nueva para tareas distintas y sé <strong>conciso</strong> en tus instrucciones.</p>
+              </div>
+            </details>
+          <details class="concept-card">
+              <summary>Iteración</summary>
+              <div class="concept-card-body">
+                <p><strong>Iterar</strong> significa pedir ajustes hasta que el resultado te convenza. ChatGPT rara vez acierta en el primer intento — y eso es normal. Frases útiles: <em>"más corto"</em>, <em>"menos formal"</em>, <em>"agregá un CTA"</em>. La calidad final depende de cuánto <strong>refinás</strong>, no de cuánto pedís de una vez.</p>
+              </div>
+            </details>
+          <details class="concept-card">
+              <summary>Plantilla reutilizable</summary>
+              <div class="concept-card-body">
+                <p>Una <strong>plantilla</strong> es un prompt con <em>campos entre corchetes</em> que reutilizás cambiando solo las variables. Ejemplo: "Escribí un email de seguimiento para [NOMBRE] que consultó por [SERVICIO]." Te ahorra tiempo y mantiene <strong>calidad consistente</strong> en tareas repetitivas.</p>
+              </div>
+            </details>
+          <details class="concept-card">
+              <summary>Alucinación</summary>
+              <div class="concept-card-body">
+                <p>Una <strong>alucinación</strong> es cuando ChatGPT inventa datos, estadísticas o referencias que <em>suenan reales pero no lo son</em>. Siempre validá cifras, leyes y datos técnicos. Para copy y ideas creativas es menos riesgoso; para <strong>decisiones legales o médicas</strong>, nunca confíes solo en la IA.</p>
+              </div>
+            </details>
+          <details class="concept-card">
+              <summary>Embudo de ventas</summary>
+              <div class="concept-card-body">
+                <p>El <strong>embudo</strong> es el camino que recorre un cliente: de <em>desconocido</em> → interesado → consulta → compra. ChatGPT te ayuda en cada etapa: contenido que atrae, mensajes que nutren, emails que cierran. Pensar en embudo evita publicar contenido <strong>bonito pero que no vende</strong>.</p>
+              </div>
+            </details>
+          <details class="concept-card">
+              <summary>Automatización</summary>
+              <div class="concept-card-body">
+                <p><strong>Automatizar</strong> no es reemplazarte — es delegar lo <em>repetitivo</em> (FAQs, seguimientos, calendarios, resúmenes) para liberar tiempo de lo que solo vos podés hacer: vender, decidir, relacionarte. ChatGPT es tu primer paso de automatización <strong>sin código ni herramientas extra</strong>.</p>
+              </div>
+            </details>
+          <details class="concept-card">
+              <summary>FAQ</summary>
+              <div class="concept-card-body">
+                <p><strong>FAQ</strong> (preguntas frecuentes) son las dudas que te repiten tus clientes. ChatGPT puede generar respuestas listas para WhatsApp, web o Instagram. Tener FAQs bien redactadas <em>reduce consultas repetitivas</em> y acelera la decisión de compra. Es uno de los <strong>primeros entregables</strong> del Día 5.</p>
+              </div>
+            </details>
+          <details class="concept-card">
+              <summary>Calendario editorial</summary>
+              <div class="concept-card-body">
+                <p>El <strong>calendario editorial</strong> es tu plan de publicaciones: qué subir, en qué red y con qué objetivo cada semana. ChatGPT lo arma en minutos si le das tu negocio, pilares de contenido y frecuencia. Evita el <em>"¿qué publico hoy?"</em> y mantiene <strong>consistencia</strong> sin agotarte.</p>
+              </div>
+            </details>
+          <details class="concept-card">
+              <summary>Copywriting</summary>
+              <div class="concept-card-body">
+                <p><strong>Copywriting</strong> es escribir textos que <em>persuaden</em>: posts, emails, landing pages, mensajes de venta. No es literatura — es comunicación con objetivo (clic, respuesta, compra). ChatGPT acelera el borrador; vos ajustás el tono y la <strong>verdad de tu negocio</strong>.</p>
+              </div>
+            </details>
+          <details class="concept-card">
+              <summary>Conversación nueva</summary>
+              <div class="concept-card-body">
+                <p>Una <strong>conversación nueva</strong> en ChatGPT es como empezar una reunión en blanco. Usala cuando cambiás de tarea (de posts a emails, de ventas a operaciones). Mantener todo en un solo chat largo mezcla contextos y <em>empeora los resultados</em>. Regla práctica: <strong>1 tarea = 1 chat</strong>.</p>
+              </div>
+            </details>
+        </div>
+        <p class="glossary-empty" id="glossary-empty" hidden>Ningún concepto coincide. Probá otra palabra.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- DÍA 1 -->
+    <!-- ═══════════════════════════════════════ -->
+    <section class="day-panel" id="panel-1" data-panel="1">
+      <div class="day-header">
+        <span class="day-num">Día 1</span>
+        <h2>Configuración en 20 minutos</h2>
+      </div>
+      <p class="day-intro">Hoy dejás ChatGPT listo para trabajar con <em>tu</em> negocio, no como un asistente genérico. Al terminar, vas a tener tu perfil cargado y un primer mensaje que suene a vos.</p>
+
+      <div class="card objetivo reveal">
+        <h3>🎯 Objetivo de hoy</h3>
+        <p>Cuenta lista + instrucciones personalizadas cargadas + primer prompt que funciona.</p>
+      </div>
+
+      <div class="card pasos reveal">
+        <h3>📋 Pasos</h3>
+        <ol>
+          <li>Entrá a <strong>chatgpt.com</strong> y creá tu cuenta con email o Google. El plan <strong>gratuito</strong> alcanza para completar esta guía.</li>
+          <li>Hacé clic en tu <strong>foto de perfil</strong> (abajo a la izquierda en escritorio, arriba en móvil) → <strong>Configuración</strong>.</li>
+          <li>En el menú lateral, elegí <strong>Personalización</strong> → <strong>Instrucciones personalizadas</strong>.</li>
+          <li>Vas a ver <strong>3 campos</strong>: (1) "¿Qué te gustaría que ChatGPT sepa sobre vos?", (2) "¿Cómo te gustaría que responda ChatGPT?", (3) "¿Hay algo más que ChatGPT deba saber?". Completá los tres.</li>
+          <li>En el campo 1, pegá la plantilla <strong>Perfil de Negocio</strong> de abajo (reemplazá los corchetes con tus datos reales).</li>
+          <li>En el campo 2, escribí: <em>"Respondé siempre en español latinoamericano, con tono [TU TONO]. Frases cortas. Sin relleno corporativo. Dá ejemplos aplicados a mi negocio."</em></li>
+          <li>En el campo 3, agregá 1 dato extra útil: tu país, horario de atención o canal principal de ventas.</li>
+          <li>Hacé clic en <strong>Guardar</strong>. Abrí un chat nuevo y enviá el <strong>prompt de prueba</strong> de abajo.</li>
+          <li>Si la respuesta suena genérica, agregá un ejemplo real de cómo escribís con clientes y pedí que lo imite.</li>
+        </ol>
+      </div>
+
+      <div class="card tip reveal">
+        <h3>⚠️ Error común</h3>
+        <p>Dejar las instrucciones vacías o poner solo "sos un asistente útil". Sin contexto de negocio, ChatGPT suena igual para todos — como un manual de empresa grande. Invertí 10 minutos en el perfil y ahorrás horas de edición después.</p>
+      </div>
+
+      <details class="example">
+        <summary>💡 Ejemplo: primer mensaje de prueba</summary>
+        <div class="example-body">
+          <div class="chat-user">
+            <div class="chat-label">Vos</div>
+            Escribí un mensaje de WhatsApp de 3 líneas para presentar mi negocio a un cliente nuevo. Que suene humano, no robótico.
+          </div>
+          <div class="chat-ai">
+            <div class="chat-label">ChatGPT</div>
+            ¡Hola! Soy [Tu nombre] de [Negocio] — ayudo a [cliente ideal] a [resultado concreto]. Si querés, te cuento en 2 minutos cómo trabajamos. ¿Te va si te mando un audio corto?
+          </div>
+        </div>
+      </details>
+
+      <details class="example">
+        <summary>💡 Ejemplo: si suena muy formal</summary>
+        <div class="example-body">
+          <div class="chat-user">
+            <div class="chat-label">Vos</div>
+            Está muy formal. Yo hablo más directo y uso "vos". Reescribilo más corto, máximo 2 líneas, como si fuera un mensaje entre amigos que se conocen de un evento.
+          </div>
+          <div class="chat-ai">
+            <div class="chat-label">ChatGPT</div>
+            Hola, soy [nombre] — hago [servicio] para [quién]. Si te sirve, charlamos 5 min y vemos si encaja. ¿Cuándo te queda?
+          </div>
+        </div>
+      </details>
+
+      <div class="card prompt-box reveal">
+        <h3>📎 Plantilla — Perfil de Negocio</h3>
+        <pre class="prompt-text" id="prompt-d1">Sos mi asistente de negocio. Mi empresa: [NOMBRE].
+Vendo: [PRODUCTO/SERVICIO]. Mi cliente ideal: [QUIÉN].
+Mi tono de marca: [FORMAL/CERCANO/DIVERTIDO].
+País/mercado: [EJ: Argentina, México, Colombia].
+Siempre respondé en español latinoamericano, con acciones concretas y ejemplos aplicados a mi negocio.
+No uses frases vacías como "en el mundo actual" o "es importante destacar".</pre>
+        <button class="btn-copy" data-target="prompt-d1">Copiar plantilla</button>
+      </div>
+
+      <div class="card prompt-box reveal">
+        <h3>🧪 Prompt de prueba</h3>
+        <pre class="prompt-text" id="prompt-d1b">Escribí un mensaje de WhatsApp de 3 líneas para presentar mi negocio a un cliente nuevo. Que suene humano, no robótico. Incluí un CTA para agendar una llamada de 15 minutos.</pre>
+        <button class="btn-copy" data-target="prompt-d1b">Copiar</button>
+      </div>
+
+      <div class="card entregable reveal">
+        <h3>✅ Entregable del día</h3>
+        <p>Perfil de negocio cargado en Instrucciones personalizadas + 1 mensaje de prueba editado que suene a tu marca.</p>
+        <label class="check-complete">
+          <input type="checkbox" data-day-check="1" />
+          <span>Completé el Día 1</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- DÍA 2 -->
+    <!-- ═══════════════════════════════════════ -->
+    <section class="day-panel" id="panel-2" data-panel="2">
+      <div class="day-header">
+        <span class="day-num">Día 2</span>
+        <h2>Tu voz de marca con IA</h2>
+      </div>
+      <p class="day-intro">Hoy entrenás a ChatGPT para que escriba como <strong>vos</strong>, no como un manual corporativo. La voz de marca es lo que diferencia tu contenido del de la competencia — y es lo que más impacto tiene en la calidad de las respuestas.</p>
+
+      <div class="card objetivo reveal">
+        <h3>🎯 Objetivo de hoy</h3>
+        <p>Que ChatGPT escriba como <strong>tu</strong> negocio, con un documento de voz de marca guardado y 3 textos listos para publicar.</p>
+      </div>
+
+      <div class="card pasos reveal">
+        <h3>📋 Pasos</h3>
+        <ol>
+          <li>Elegí <strong>3 palabras</strong> que definen tu tono (ej: cercano, directo, experto / divertido, práctico, honesto).</li>
+          <li>Listá <strong>3–5 palabras o frases</strong> que nunca usarías (ej: "sinergia", "líder del mercado", "soluciones integrales", "en el mundo actual").</li>
+          <li>Buscá un texto tuyo real: un post de Instagram, un email enviado, un mensaje de WhatsApp largo. Mínimo 5 líneas. Esto es oro para que ChatGPT imite tu estilo.</li>
+          <li>Completá la plantilla <strong>Voz de Marca</strong> y actualizá tus Instrucciones personalizadas (sumá al perfil del Día 1 o reemplazá el campo 1).</li>
+          <li>Pedile a ChatGPT que genere <strong>3 posts de prueba</strong> (Instagram, LinkedIn, WhatsApp status) sobre un tema de esta semana.</li>
+          <li>Leé cada texto en voz alta. Si no suena a vos, pedí ajustes: "más corto", "menos formal", "más argentino/mexicano", "sin emojis".</li>
+          <li>Guardá la versión final de voz de marca en una nota llamada <strong>"Voz de Marca"</strong> en tu celular o Google Docs.</li>
+        </ol>
+      </div>
+
+      <div class="card tip reveal">
+        <h3>⚠️ Error común</h3>
+        <p>Aceptar el primer resultado. La voz de marca se afina en la 2.ª o 3.ª iteración. También: no dar ejemplos reales tuyos. Sin muestra de cómo escribís, ChatGPT inventa un tono que no es el tuyo.</p>
+      </div>
+
+      <details class="example">
+        <summary>💡 Ejemplo: definir voz de marca</summary>
+        <div class="example-body">
+          <div class="chat-user">
+            <div class="chat-label">Vos</div>
+            Actualizá mi voz de marca:
+            - Tono: cercano, claro, práctico
+            - Palabras prohibidas: sinergia, disruptivo, líder del mercado
+            - Ejemplo de cómo escribo yo:
+            """Hola! Te cuento que el pack incluye 3 sesiones de 45 min por Zoom. No hace falta que sepas nada previo — arrancamos desde donde estés."""
+            Cuando escribas por mí, imitá este estilo.
+          </div>
+          <div class="chat-ai">
+            <div class="chat-label">ChatGPT</div>
+            Listo. A partir de ahora voy a escribir con tono cercano, claro y práctico, evitando palabras corporativas. Usaré frases cortas y un estilo conversacional como tu ejemplo. ¿Querés que genere los 3 posts de prueba ahora?
+          </div>
+        </div>
+      </details>
+
+      <details class="example">
+        <summary>💡 Ejemplo: afinar un post que no convence</summary>
+        <div class="example-body">
+          <div class="chat-user">
+            <div class="chat-label">Vos</div>
+            El post de Instagram está bien pero suena muy "marketero". Reescribilo: menos hashtags, sin preguntas retóricas, más directo. Máximo 80 palabras.
+          </div>
+          <div class="chat-ai">
+            <div class="chat-label">ChatGPT</div>
+            La semana pasada una clienta me dijo: "nunca pensé que podía organizar mi negocio en 30 minutos al día". No es magia — es tener un sistema simple. Si querés el mío, escribime "SISTEMA" y te lo mando.
+          </div>
+        </div>
+      </details>
+
+      <div class="card prompt-box reveal">
+        <h3>📎 Plantilla — Voz de Marca</h3>
+        <pre class="prompt-text" id="prompt-d2">Actualizá mi voz de marca:
+- Tono (3 palabras): [EJ: cercano, claro, práctico]
+- Palabras prohibidas: [LISTA]
+- Ejemplo de cómo escribo yo:
+"""
+[PEGÁ ACÁ UN TEXTO REAL TUYO — post, email o WhatsApp]
+"""
+Cuando escribas por mí, imitá este estilo. Frases cortas. Sin relleno.
+Si dudás entre formal e informal, elegí informal.</pre>
+        <button class="btn-copy" data-target="prompt-d2">Copiar plantilla</button>
+      </div>
+
+      <div class="card prompt-box reveal">
+        <h3>📱 Generar 3 posts de prueba</h3>
+        <pre class="prompt-text" id="prompt-d2b">Con mi voz de marca, escribí 3 publicaciones distintas sobre [TEMA DE ESTA SEMANA]:
+1) Instagram (máx. 120 palabras + 5 hashtags relevantes)
+2) LinkedIn (tono profesional pero humano, máx. 150 palabras)
+3) WhatsApp estado (máx. 2 líneas + CTA)
+Mostrá las 3 en formato lista numerada. Sin emojis excesivos.</pre>
+        <button class="btn-copy" data-target="prompt-d2b">Copiar</button>
+      </div>
+
+      <div class="card entregable reveal">
+        <h3>✅ Entregable del día</h3>
+        <p>Documento de voz de marca guardado + 3 textos editados que podrías publicar mañana sin vergüenza.</p>
+        <label class="check-complete">
+          <input type="checkbox" data-day-check="2" />
+          <span>Completé el Día 2</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- DÍA 3 -->
+    <!-- ═══════════════════════════════════════ -->
+    <section class="day-panel" id="panel-3" data-panel="3">
+      <div class="day-header">
+        <span class="day-num">Día 3</span>
+        <h2>Contenido para redes en 30 min/semana</h2>
+      </div>
+      <p class="day-intro">Hoy dejás de improvisar publicaciones cada día. En una sola sesión vas a planificar y redactar <strong>7 piezas de contenido</strong> para la semana, cada una con hook y CTA.</p>
+
+      <div class="card objetivo reveal">
+        <h3>🎯 Objetivo de hoy</h3>
+        <p>Planificar y redactar <strong>7 publicaciones</strong> en una sola sesión de 30 minutos.</p>
+      </div>
+
+      <div class="card pasos reveal">
+        <h3>📋 Pasos</h3>
+        <ol>
+          <li>Elegí <strong>1 red principal</strong> (Instagram, LinkedIn o TikTok). No intentes las tres a la vez — dominá una primero.</li>
+          <li>Definí <strong>3 pilares de contenido</strong> (ej: educativo, testimonio/caso real, oferta/promo).</li>
+          <li>Usá el prompt <strong>Calendario 7 días</strong> y revisá que cada día tenga hook + CTA claro.</li>
+          <li>Para 2 publicaciones que te gusten más, pedí a ChatGPT que adapte el copy al formato (reel, carrusel, story).</li>
+          <li>Guardá el calendario en Notas, Google Docs o carpeta "Contenido" con la fecha de la semana.</li>
+          <li>Dejá listos 2 posts para publicar esta semana (texto + hashtags + CTA).</li>
+        </ol>
+      </div>
+
+      <div class="card tip reveal">
+        <h3>⚠️ Error común</h3>
+        <p>Publicar sin CTA. Cada pieza debe invitar a una acción concreta: escribir, comentar, agendar, descargar, guardar el post. También: crear contenido para 3 redes distintas el primer día — mejor dominar una.</p>
+      </div>
+
+      <details class="example">
+        <summary>💡 Ejemplo: calendario de contenido</summary>
+        <div class="example-body">
+          <div class="chat-user">
+            <div class="chat-label">Vos</div>
+            Soy consultora de marketing para restaurantes en CDMX. Mi audiencia: dueños de restaurantes pequeños con 1-3 sucursales.
+            Creá calendario de contenido 7 días para Instagram.
+            Pilares: tips operativos, casos de clientes, promos del mes.
+            Por cada día: hook, copy completo (máx. 120 palabras), CTA, formato sugerido.
+          </div>
+          <div class="chat-ai">
+            <div class="chat-label">ChatGPT</div>
+            <strong>Día 1 — Educativo (Reel)</strong><br>
+            Hook: "Tu menú tiene 40 platos. Tus clientes eligen 6."<br>
+            Copy: La paradoja del menú largo: más opciones = más confusión = menos venta. Probá reducir a tus 12 estrellas y medí la diferencia en 2 semanas...<br>
+            CTA: Guardá este post y probalo este fin de semana.<br>
+            <em>(... continúa días 2–7)</em>
+          </div>
+        </div>
+      </details>
+
+      <div class="card prompt-box reveal">
+        <h3>📅 Calendario 7 días</h3>
+        <pre class="prompt-text" id="prompt-d3">Soy [NEGOCIO]. Mi audiencia: [CLIENTE IDEAL].
+Creá calendario de contenido 7 días para [RED SOCIAL].
+Pilares: [PILAR 1], [PILAR 2], [PILAR 3].
+Por cada día incluí:
+- Título interno
+- Hook (primera línea que frena el scroll)
+- Copy completo (máx. 150 palabras)
+- CTA concreto
+- Formato sugerido (reel, carrusel, post, story)
+Usá mi voz de marca. Español latinoamericano.</pre>
+        <button class="btn-copy" data-target="prompt-d3">Copiar</button>
+      </div>
+
+      <div class="card prompt-box reveal">
+        <h3>🎬 Adaptar a formato reel</h3>
+        <pre class="prompt-text" id="prompt-d3b">Tomá el post del [DÍA X] del calendario y convertilo en guion de reel de 30 segundos.
+Estructura: hook visual (3 seg) → problema → solución → CTA.
+Lenguaje hablado, como si le explicaras a un amigo.</pre>
+        <button class="btn-copy" data-target="prompt-d3b">Copiar</button>
+      </div>
+
+      <div class="card entregable reveal">
+        <h3>✅ Entregable del día</h3>
+        <p>Calendario de 7 días guardado + 2 posts listos para publicar esta semana.</p>
+        <label class="check-complete">
+          <input type="checkbox" data-day-check="3" />
+          <span>Completé el Día 3</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- DÍA 4 -->
+    <!-- ═══════════════════════════════════════ -->
+    <section class="day-panel" id="panel-4" data-panel="4">
+      <div class="day-header">
+        <span class="day-num">Día 4</span>
+        <h2>Emails y mensajes que venden</h2>
+      </div>
+      <p class="day-intro">Hoy armás tu arsenal de mensajes de venta. Las mismas respuestas que hoy escribís desde cero cada vez — presupuestos, seguimientos, objeciones — quedan como plantillas listas para personalizar en 30 segundos.</p>
+
+      <div class="card objetivo reveal">
+        <h3>🎯 Objetivo de hoy</h3>
+        <p>Tener <strong>5 plantillas</strong> listas para ventas y seguimiento, con campos editables.</p>
+      </div>
+
+      <div class="card pasos reveal">
+        <h3>📋 Pasos</h3>
+        <ol>
+          <li>Listá los <strong>5 mensajes</strong> que más repetís (presupuesto, seguimiento, objeción precio, primer contacto, cierre).</li>
+          <li>Generá cada plantilla con el prompt base, usando tu oferta y precios reales.</li>
+          <li>Dejá campos <strong>[ENTRE CORCHETES]</strong> para completar rápido antes de enviar (nombre, servicio, precio, fecha).</li>
+          <li>Leé cada plantilla en voz alta — si no la dirías en persona, pedí que suene más natural.</li>
+          <li>Guardá las 5 plantillas en una nota llamada <strong>"Mensajes venta"</strong>.</li>
+          <li>Enviá <strong>1 mensaje real</strong> hoy a un cliente o lead tibio usando una de las plantillas.</li>
+        </ol>
+      </div>
+
+      <div class="card tip reveal">
+        <h3>⚠️ Error común</h3>
+        <p>Plantillas demasiado largas. En WhatsApp, menos de 5 líneas funciona mejor. En email, máximo 150 palabras. También: no personalizar el [NOMBRE] — un mensaje con "Hola [NOMBRE]" sin editar destruye la confianza.</p>
+      </div>
+
+      <details class="example">
+        <summary>💡 Ejemplo: respuesta a "está caro"</summary>
+        <div class="example-body">
+          <div class="chat-user">
+            <div class="chat-label">Vos</div>
+            Mi negocio: diseño web para PyMEs. Precio desde $800 USD.
+            Escribí respuesta a cliente que dice "está caro" por WhatsApp. Máx. 4 líneas. Empatía + valor concreto, sin presionar.
+          </div>
+          <div class="chat-ai">
+            <div class="chat-label">ChatGPT</div>
+            Te entiendo — es una inversión importante. Lo que incluye: diseño personalizado, 3 rondas de cambios, y queda listo en 10 días para que empieces a recibir consultas online. Si querés, te muestro 2 ejemplos de clientes similares y vemos si encaja. ¿Te sirve?
+          </div>
+        </div>
+      </details>
+
+      <details class="example">
+        <summary>💡 Ejemplo: seguimiento sin respuesta</summary>
+        <div class="example-body">
+          <div class="chat-user">
+            <div class="chat-label">Vos</div>
+            Email de seguimiento para [NOMBRE] que pidió presupuesto hace 48 horas y no respondió. Tono amable, sin presión. Máx. 100 palabras. Incluí asunto del email.
+          </div>
+          <div class="chat-ai">
+            <div class="chat-label">ChatGPT</div>
+            <strong>Asunto:</strong> ¿Alguna duda sobre el presupuesto, [NOMBRE]?<br><br>
+            Hola [NOMBRE], te escribo para saber si pudiste revisar la propuesta que te envié el [DÍA]. Si tenés alguna pregunta o querés ajustar algo, con gusto lo vemos. Sin apuro — quedo atento/a.
+          </div>
+        </div>
+      </details>
+
+      <div class="card prompt-box reveal">
+        <h3>💬 Pack 5 plantillas de venta</h3>
+        <pre class="prompt-text" id="prompt-d4">Mi negocio: [NOMBRE]. Vendo: [OFERTA]. Precio desde: [X].
+Con mi voz de marca, creá 5 plantillas cortas:
+1) WhatsApp primer contacto (lead frío)
+2) Email seguimiento 48h sin respuesta
+3) Respuesta a "está caro"
+4) Propuesta comercial (3 párrafos)
+5) Cierre amable ("¿avanzamos?")
+Cada una máx. 120 palabras. Dejá [CAMPOS] editables.
+Español latinoamericano.</pre>
+        <button class="btn-copy" data-target="prompt-d4">Copiar</button>
+      </div>
+
+      <div class="card entregable reveal">
+        <h3>✅ Entregable del día</h3>
+        <p>5 plantillas guardadas en nota "Mensajes venta" + 1 enviada en la vida real.</p>
+        <label class="check-complete">
+          <input type="checkbox" data-day-check="4" />
+          <span>Completé el Día 4</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- DÍA 5 -->
+    <!-- ═══════════════════════════════════════ -->
+    <section class="day-panel" id="panel-5" data-panel="5">
+      <div class="day-header">
+        <span class="day-num">Día 5</span>
+        <h2>Automatizá tareas repetitivas</h2>
+      </div>
+      <p class="day-intro">Hoy identificás las tareas que más tiempo te roban y creás <strong>3 flujos con IA</strong> para resolverlas en minutos. Sin Zapier, sin código — solo prompts bien armados que reutilizás cada semana.</p>
+
+      <div class="card objetivo reveal">
+        <h3>🎯 Objetivo de hoy</h3>
+        <p>Documentar <strong>3 flujos</strong> que te ahorren 2+ horas por semana.</p>
+      </div>
+
+      <div class="card pasos reveal">
+        <h3>📋 Pasos</h3>
+        <ol>
+          <li>Anotá las <strong>3 tareas</strong> que más te molestan o repetís (FAQs, presupuestos, resúmenes de reunión, descripciones de producto).</li>
+          <li>Para cada tarea, definí: qué datos le das a ChatGPT (entrada) y qué necesitás recibir (salida).</li>
+          <li>Armá un prompt por tarea usando la plantilla de flujo repetitivo.</li>
+          <li>Probá cada flujo con un caso real de esta semana y ajustá lo que no funcione.</li>
+          <li>Guardá los 3 flujos en una nota <strong>"Flujos IA"</strong> con nombre, prompt y ejemplo.</li>
+          <li>Usá al menos <strong>1 flujo hoy</strong> en trabajo real y cronometrá cuánto tardaste vs. antes.</li>
+        </ol>
+      </div>
+
+      <div class="card tip reveal">
+        <h3>⚠️ Error común</h3>
+        <p>Crear flujos para tareas que hacés una vez al mes. Priorizá lo que repetís <strong>semanalmente</strong>. También: prompts demasiado vagos — "respondé este mensaje" sin indicar tono, extensión ni formato da resultados inconsistentes.</p>
+      </div>
+
+      <details class="example">
+        <summary>💡 Ejemplo: responder FAQs automáticamente</summary>
+        <div class="example-body">
+          <div class="chat-user">
+            <div class="chat-label">Vos</div>
+            Actuá como mi asistente de soporte. Mi negocio: academia de inglés online.
+            Tarea: responder preguntas frecuentes de clientes potenciales.
+            Entrada: mensaje del cliente.
+            Salida: respuesta lista para copiar en WhatsApp, máx. 4 líneas, tono cercano.
+            Acá va la entrada:
+            "¿Cuánto cuesta el curso y si tienen clases los sábados?"
+          </div>
+          <div class="chat-ai">
+            <div class="chat-label">ChatGPT</div>
+            ¡Hola! El curso completo arranca en $[PRECIO]/mes e incluye 2 clases en vivo por semana. Sí, tenemos grupo los sábados de 10 a 11:30. ¿Querés que te mande el cronograma detallado?
+          </div>
+        </div>
+      </details>
+
+      <details class="example">
+        <summary>💡 Ejemplo: armar presupuesto express</summary>
+        <div class="example-body">
+          <div class="chat-user">
+            <div class="chat-label">Vos</div>
+            Actuá como mi asistente de ventas. Tarea: armar presupuestos.
+            Entrada: datos del cliente y servicio solicitado.
+            Salida: presupuesto en bullet points listo para enviar.
+            Acá va la entrada:
+            Cliente: María, dueña de cafetería. Servicio: diseño de menú + 20 posts Instagram. Presupuesto base: $1,200.
+          </div>
+          <div class="chat-ai">
+            <div class="chat-label">ChatGPT</div>
+            <strong>Presupuesto — Diseño menú + contenido IG</strong><br>
+            • Diseño de menú (formato A4 + versión digital): $400<br>
+            • 20 posts Instagram (diseño + copy): $800<br>
+            • <strong>Total: $1,200</strong><br>
+            • Plazo: 15 días hábiles | 50% anticipo, 50% contra entrega
+          </div>
+        </div>
+      </details>
+
+      <div class="card prompt-box reveal">
+        <h3>⚙️ Plantilla — Flujo repetitivo</h3>
+        <pre class="prompt-text" id="prompt-d5">Actuá como mi asistente de [ÁREA: ventas/operaciones/soporte].
+Tarea: [DESCRIBÍ LA TAREA EN 1 LÍNEA].
+Entrada que te voy a dar: [EJ: mensaje del cliente / datos del pedido].
+Salida que necesito: [EJ: respuesta lista para copiar / tabla / checklist].
+Reglas: español latinoamericano, tono [TU TONO], máx. [X] palabras.
+Acá va la entrada:
+[PEGÁ DATOS]</pre>
+        <button class="btn-copy" data-target="prompt-d5">Copiar</button>
+      </div>
+
+      <div class="card entregable reveal">
+        <h3>✅ Entregable del día</h3>
+        <p>3 flujos documentados con prompt listo + 1 usado hoy en trabajo real.</p>
+        <label class="check-complete">
+          <input type="checkbox" data-day-check="5" />
+          <span>Completé el Día 5</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- DÍA 6 -->
+    <!-- ═══════════════════════════════════════ -->
+    <section class="day-panel" id="panel-6" data-panel="6">
+      <div class="day-header">
+        <span class="day-num">Día 6</span>
+        <h2>Investigación y decisiones con IA</h2>
+      </div>
+      <p class="day-intro">Hoy usás ChatGPT como consultor para analizar una idea de negocio, producto o servicio. No para que decida por vos — sino para que te ayude a <strong>estructurar el pensamiento</strong> y saber qué validar con clientes reales.</p>
+
+      <div class="card objetivo reveal">
+        <h3>🎯 Objetivo de hoy</h3>
+        <p>Completar una <strong>ficha de análisis</strong> de 1 idea (producto, servicio o nicho) con decisión clara.</p>
+      </div>
+
+      <div class="card pasos reveal">
+        <h3>📋 Pasos</h3>
+        <ol>
+          <li>Elegí <strong>1 idea</strong> que tengas en la cabeza (nuevo servicio, pack, audiencia, producto digital).</li>
+          <li>Corré el prompt <strong>Ficha de análisis</strong> con todos los datos que tengas (aunque sean pocos).</li>
+          <li>Leé el resultado con ojo crítico — subrayá lo que suena genérico o poco aplicable a tu mercado.</li>
+          <li>Marcá qué puntos necesitás <strong>validar con datos reales</strong> (encuesta, 5 conversaciones con clientes, búsqueda en redes).</li>
+          <li>Completá la validación mínima: hablá con 2–3 personas de tu audiencia sobre el problema que resolvés.</li>
+          <li>Tomá la decisión: <strong>avanzar / pivotar / descartar</strong> — anotala en 1 línea con la razón.</li>
+        </ol>
+      </div>
+
+      <div class="card tip reveal">
+        <h3>⚠️ Error común</h3>
+        <p>Creer que ChatGPT conoce tu mercado local. Usalo para estructurar preguntas y ver ángulos que no consideraste; validá siempre con clientes reales. También: analizar 5 ideas a la vez — mejor una bien hecha que cinco superficiales.</p>
+      </div>
+
+      <details class="example">
+        <summary>💡 Ejemplo: ficha de análisis</summary>
+        <div class="example-body">
+          <div class="chat-user">
+            <div class="chat-label">Vos</div>
+            Idea: Pack de 10 plantillas de contrato para freelancers creativos en Argentina.
+            Audiencia: diseñadores, fotógrafos, redactores freelance.
+            Completá la ficha de análisis con veredicto semáforo.
+          </div>
+          <div class="chat-ai">
+            <div class="chat-label">ChatGPT</div>
+            <strong>1) Problema:</strong> Freelancers pierden tiempo buscando contratos genéricos o pagan abogados caros por documentos simples.<br>
+            <strong>2) Competencia:</strong> Plantillas en Etsy, modelos gratis en blogs, servicios legales online.<br>
+            <strong>3) Propuesta de valor:</strong> Contratos listos adaptados a ley argentina, en lenguaje simple, por menos de un café por plantilla.<br>
+            <strong>7) Veredicto: 🟡 Amarillo</strong> — buena idea, pero validá disposición de pago con 5 freelancers antes de armar el pack.
+          </div>
+        </div>
+      </details>
+
+      <div class="card prompt-box reveal">
+        <h3>📊 Ficha de análisis de idea</h3>
+        <pre class="prompt-text" id="prompt-d6">Idea de negocio: [DESCRIPCIÓN].
+Audiencia: [QUIÉN]. País/región: [LATAM/PAÍS].
+Completá esta ficha:
+1) Problema que resuelve
+2) 3 competidores o alternativas
+3) Propuesta de valor en 1 frase
+4) Precio sugerido y por qué
+5) 3 riesgos
+6) 3 formas de validar en 7 días sin gastar plata
+7) Veredicto: semáforo verde/amarillo/rojo con argumento
+Sé directo. Si faltan datos, decime qué preguntarle al mercado.</pre>
+        <button class="btn-copy" data-target="prompt-d6">Copiar</button>
+      </div>
+
+      <div class="card prompt-box reveal">
+        <h3>🔍 Validación rápida con clientes</h3>
+        <pre class="prompt-text" id="prompt-d6b">Necesito validar esta idea con clientes reales: [IDEA].
+Escribí 5 preguntas que puedo hacer por WhatsApp o Instagram DM para entender si pagarían por esto.
+Que sean conversacionales, no una encuesta formal. Máx. 2 líneas cada pregunta.</pre>
+        <button class="btn-copy" data-target="prompt-d6b">Copiar</button>
+      </div>
+
+      <div class="card entregable reveal">
+        <h3>✅ Entregable del día</h3>
+        <p>Ficha guardada + decisión escrita (avanzar / pivotar / descartar) con al menos 2 conversaciones de validación.</p>
+        <label class="check-complete">
+          <input type="checkbox" data-day-check="6" />
+          <span>Completé el Día 6</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- DÍA 7 -->
+    <!-- ═══════════════════════════════════════ -->
+    <section class="day-panel" id="panel-7" data-panel="7">
+      <div class="day-header">
+        <span class="day-num">Día 7</span>
+        <h2>Tu sistema permanente</h2>
+      </div>
+      <p class="day-intro">Último día: consolidás todo lo que armaste en una rutina semanal de <strong>30 minutos</strong>. El objetivo no es aprender más — es que el sistema siga funcionando el próximo mes sin que tengas que releer esta guía.</p>
+
+      <div class="card objetivo reveal">
+        <h3>🎯 Objetivo de hoy</h3>
+        <p>Armar la rutina <strong>"Lunes con IA"</strong> — 30 min/semana para mantener todo actualizado.</p>
+      </div>
+
+      <div class="card pasos reveal">
+        <h3>📋 Pasos</h3>
+        <ol>
+          <li>Reuní en una carpeta o nota llamada <strong>"Sistema IA"</strong>: voz de marca, calendario, plantillas venta, 3 flujos, mejores prompts.</li>
+          <li>Revisá cada entregable de los días 1–6 y marcá si falta algo — completá lo pendiente hoy.</li>
+          <li>Copiá el <strong>checklist semanal</strong> de abajo a tu agenda o calendario.</li>
+          <li>Agendá <strong>30 min cada lunes</strong> (o el día que arranques tu semana laboral) como evento recurrente.</li>
+          <li>Elegí 1 métrica simple para medir el impacto: horas ahorradas, mensajes enviados, posts publicados.</li>
+          <li>Celebrá: tenés 7 sistemas funcionando. El siguiente paso es repetir y afinar, no aprender más herramientas.</li>
+        </ol>
+      </div>
+
+      <div class="card tip reveal">
+        <h3>⚠️ Error común</h3>
+        <p>Terminar la guía y no agendar la rutina semanal. Sin el "Lunes con IA", en 2 semanas volvés a improvisar. También: buscar más herramientas en vez de dominar lo que ya tenés.</p>
+      </div>
+
+      <details class="example">
+        <summary>💡 Ejemplo: tu primer "Lunes con IA"</summary>
+        <div class="example-body">
+          <div class="chat-user">
+            <div class="chat-label">Vos</div>
+            Es lunes. Necesito el calendario de contenido de esta semana para Instagram. Mi negocio: [X]. Pilares: educativo, testimonio, oferta. 5 días (descanso sábado y domingo).
+          </div>
+          <div class="chat-ai">
+            <div class="chat-label">ChatGPT</div>
+            <em>(Genera calendario completo con hooks, copy y CTAs en 2 minutos — listo para copiar a tu carpeta de Contenido)</em>
+          </div>
+        </div>
+      </details>
+
+      <div class="card prompt-box reveal">
+        <h3>📆 Checklist — Lunes con IA (30 min)</h3>
+        <pre class="prompt-text" id="prompt-d7">□ 10 min — Generar calendario de contenido de la semana
+□ 10 min — Revisar y actualizar 1 plantilla de venta
+□ 5 min — Correr 1 flujo repetitivo (FAQ / presupuesto)
+□ 5 min — Guardar el mejor prompt de la semana en "Favoritos"</pre>
+        <button class="btn-copy" data-target="prompt-d7">Copiar checklist</button>
+      </div>
+
+      <div class="card entregable reveal">
+        <h3>✅ Entregable del día</h3>
+        <p>Carpeta "Sistema IA" organizada + lunes agendado en calendario + todos los días marcados como completos.</p>
+        <label class="check-complete">
+          <input type="checkbox" data-day-check="7" />
+          <span>Completé el Día 7 — ¡Felicitaciones!</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- BONUS -->
+    <!-- ═══════════════════════════════════════ -->
+    <section class="day-panel" id="panel-bonus" data-panel="bonus">
+      <div class="day-header">
+        <span class="day-num">Bonus</span>
+        <h2>Pack de prompts + errores + checklist</h2>
+      </div>
+      <p class="day-intro">Tu biblioteca de prompts lista para copiar. Organizados por área de negocio — usalos tal cual o adaptalos con tus datos entre corchetes.</p>
+
+      <p class="bonus-category">Ventas</p>
+
+      <div class="card prompt-box reveal">
+        <h3>Seguimiento suave</h3>
+        <pre class="prompt-text" id="prompt-b01">Escribí seguimiento WhatsApp para [NOMBRE] que pidió info de [SERVICIO] hace 3 días. Sin presión, 3 líneas, CTA agendar llamada.</pre>
+        <button class="btn-copy" data-target="prompt-b01">Copiar</button>
+      </div>
+
+      <div class="card prompt-box reveal">
+        <h3>Objeción "lo pienso"</h3>
+        <pre class="prompt-text" id="prompt-b02">Respuesta a cliente que dice "lo pienso" sobre [OFERTA]. Empatía + 1 beneficio concreto + pregunta abierta. Máx. 80 palabras.</pre>
+        <button class="btn-copy" data-target="prompt-b02">Copiar</button>
+      </div>
+
+      <div class="card prompt-box reveal">
+        <h3>Presupuesto express</h3>
+        <pre class="prompt-text" id="prompt-b03">Armá presupuesto en bullet points para [SERVICIO] cliente [TIPO]. Incluí alcance, plazo, precio, forma de pago.</pre>
+        <button class="btn-copy" data-target="prompt-b03">Copiar</button>
+      </div>
+
+      <div class="card prompt-box reveal">
+        <h3>Reactivar cliente viejo</h3>
+        <pre class="prompt-text" id="prompt-b04">Email para cliente que no compra hace [X] meses. Tono cercano, novedad real, invitación a responder.</pre>
+        <button class="btn-copy" data-target="prompt-b04">Copiar</button>
+      </div>
+
+      <p class="bonus-category">Marketing</p>
+
+      <div class="card prompt-box reveal">
+        <h3>Headlines para anuncio</h3>
+        <pre class="prompt-text" id="prompt-b05">10 titulares para anuncio de [PRODUCTO] audiencia [X]. Máx. 8 palabras cada uno. Enfoque beneficio.</pre>
+        <button class="btn-copy" data-target="prompt-b05">Copiar</button>
+      </div>
+
+      <div class="card prompt-box reveal">
+        <h3>Email lanzamiento</h3>
+        <pre class="prompt-text" id="prompt-b06">Email anunciando [NOVEDAD]. Asunto + cuerpo 200 palabras + PS con urgencia suave.</pre>
+        <button class="btn-copy" data-target="prompt-b06">Copiar</button>
+      </div>
+
+      <div class="card prompt-box reveal">
+        <h3>Testimonio solicitado</h3>
+        <pre class="prompt-text" id="prompt-b07">Mensaje pidiendo testimonio a cliente feliz. 3 preguntas guía que pueda responder por WhatsApp en 2 min.</pre>
+        <button class="btn-copy" data-target="prompt-b07">Copiar</button>
+      </div>
+
+      <div class="card prompt-box reveal">
+        <h3>Promo fin de mes</h3>
+        <pre class="prompt-text" id="prompt-b08">Copy promo [X]% válida hasta [FECHA]. 3 versiones: Instagram, email, WhatsApp broadcast.</pre>
+        <button class="btn-copy" data-target="prompt-b08">Copiar</button>
+      </div>
+
+      <p class="bonus-category">Contenido</p>
+
+      <div class="card prompt-box reveal">
+        <h3>Hook viral</h3>
+        <pre class="prompt-text" id="prompt-b09">15 hooks para reel sobre [TEMA]. Primera frase debe generar curiosidad. Máx. 12 palabras cada uno.</pre>
+        <button class="btn-copy" data-target="prompt-b09">Copiar</button>
+      </div>
+
+      <div class="card prompt-box reveal">
+        <h3>Carrusel educativo</h3>
+        <pre class="prompt-text" id="prompt-b10">Estructura carrusel 7 slides: [TEMA]. Por slide: título + 2 líneas de texto. Slide 7 = CTA.</pre>
+        <button class="btn-copy" data-target="prompt-b10">Copiar</button>
+      </div>
+
+      <div class="card prompt-box reveal">
+        <h3>Guion reel 30 seg</h3>
+        <pre class="prompt-text" id="prompt-b11">Guion reel 30 seg enseñando [TIP]. Formato: problema → solución → CTA. Lenguaje hablado.</pre>
+        <button class="btn-copy" data-target="prompt-b11">Copiar</button>
+      </div>
+
+      <div class="card prompt-box reveal">
+        <h3>Calendario 30 días</h3>
+        <pre class="prompt-text" id="prompt-b12">Calendario contenido 30 días para [NEGOCIO] en [RED]. Solo títulos + formato + pilar. Tabla markdown.</pre>
+        <button class="btn-copy" data-target="prompt-b12">Copiar</button>
+      </div>
+
+      <p class="bonus-category">Operaciones</p>
+
+      <div class="card prompt-box reveal">
+        <h3>FAQ automático</h3>
+        <pre class="prompt-text" id="prompt-b13">Generá 15 preguntas frecuentes de clientes de [NEGOCIO] con respuestas cortas listas para web/WhatsApp.</pre>
+        <button class="btn-copy" data-target="prompt-b13">Copiar</button>
+      </div>
+
+      <div class="card prompt-box reveal">
+        <h3>Resumen de reunión</h3>
+        <pre class="prompt-text" id="prompt-b14">Resumí esta reunión en: acuerdos, responsables, fechas, próximos pasos:
+[PEGÁ NOTAS]</pre>
+        <button class="btn-copy" data-target="prompt-b14">Copiar</button>
+      </div>
+
+      <div class="card prompt-box reveal">
+        <h3>Checklist proceso</h3>
+        <pre class="prompt-text" id="prompt-b15">Checklist paso a paso para entregar [SERVICIO] sin olvidar nada. Máx. 12 ítems accionables.</pre>
+        <button class="btn-copy" data-target="prompt-b15">Copiar</button>
+      </div>
+
+      <div class="card tip reveal">
+        <h3>⚠️ 10 errores que arruinan tus prompts</h3>
+        <ol>
+          <li>Prompt de 1 línea sin contexto de negocio</li>
+          <li>No definir tono ni audiencia</li>
+          <li>Pedir "todo" en un solo mensaje</li>
+          <li>Aceptar la primera respuesta sin iterar</li>
+          <li>No dar ejemplos de cómo escribís vos</li>
+          <li>Usar español de España si vendés en LATAM (o viceversa)</li>
+          <li>Olvidar el CTA en contenido y ventas</li>
+          <li>Confiar en datos de mercado sin validar</li>
+          <li>No guardar los prompts que funcionaron</li>
+          <li>Usar ChatGPT para decisiones legales o médicas</li>
+        </ol>
+      </div>
+
+      <div class="card pasos reveal">
+        <h3>✓ Checklist — ¿Mi prompt está bien?</h3>
+        <ol>
+          <li>¿Dice quién soy y a quién le hablo?</li>
+          <li>¿Define formato y extensión de salida?</li>
+          <li>¿Incluye tono o ejemplo mío?</li>
+          <li>¿Pide 1 cosa por mensaje?</li>
+          <li>¿Puedo reutilizarlo mañana con otro [CAMPO]?</li>
+        </ol>
+      </div>
+
+      <div class="related-content reveal">
+        <h3>📚 Más contenido relacionado</h3>
+        <p>Seguí automatizando tu negocio con otras guías COCO GO:</p>
+        <div class="related-grid">
+          <div class="related-card coming-soon">
+            <span class="related-icon">🟣</span>
+            <div>
+              <strong>Claude para Emprendedores</strong>
+              <span>Automatizá análisis, documentos y estrategia sin código</span>
+            </div>
+            <span class="related-tag">Próximo</span>
+          </div>
+          <div class="related-card coming-soon">
+            <span class="related-icon">🔵</span>
+            <div>
+              <strong>Gemini para Emprendedores</strong>
+              <span>Integrá IA de Google en tu flujo diario de negocio</span>
+            </div>
+            <span class="related-tag">Próximo</span>
+          </div>
+          <div class="related-card coming-soon">
+            <span class="related-icon">🚀</span>
+            <div>
+              <strong>Tu Primer Producto Digital en 14 Días</strong>
+              <span>De idea a venta — sin experiencia previa</span>
+            </div>
+            <span class="related-tag">Próximo</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-social">
+        <a href="#" class="social-link social-ig" aria-label="Instagram" title="Instagram — próximamente">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        </a>
+        <a href="#" class="social-link social-x" aria-label="X" title="X — próximamente">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      </div>
+      <div class="footer-logo" aria-label="COCO GO">
+        <svg class="logo-mark logo-mark--sm" width="28" height="28" viewBox="0 0 40 40" aria-hidden="true">
+          <defs>
+            <linearGradient id="cogo-grad-ft" x1="6" y1="2" x2="34" y2="38" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#FF8A6E"/>
+              <stop offset="50%" stop-color="#FF6B4A"/>
+              <stop offset="100%" stop-color="#D93D22"/>
+            </linearGradient>
+            <linearGradient id="cogo-shine-ft" x1="20" y1="2" x2="20" y2="22" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#fff" stop-opacity="0.28"/>
+              <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <rect width="40" height="40" rx="11" fill="url(#cogo-grad-ft)"/>
+          <rect width="40" height="40" rx="11" fill="url(#cogo-shine-ft)"/>
+          <g fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 12 L19 20 L11 28"/>
+            <path d="M19 12 L27 20 L19 28" opacity="0.9"/>
+          </g>
+        </svg>
+        <div class="logo-wordmark logo-wordmark--sm">
+          <span class="logo-coco">COCO</span>
+          <span class="logo-go">GO</span>
+        </div>
+      </div>
+      <p>Guía interactiva ChatGPT para Emprendedores</p>
+      <p class="footer-support">¿Problemas con la guía? <a href="mailto:cocogo.hola@gmail.com">cocogo.hola@gmail.com</a> — respondemos en 48 h hábiles.</p>
+      <p>Abrí este archivo en Chrome o Safari para la mejor experiencia.</p>
+
+      <div class="related-content" style="margin-top:1.5rem;text-align:left;">
+        <h3>Explorá más guías</h3>
+        <p>Estamos armando la familia completa de asistentes IA para emprendedores LATAM:</p>
+        <div class="related-grid">
+          <div class="related-card coming-soon">
+            <span class="related-icon">💬</span>
+            <div>
+              <strong>ChatGPT para Coaches</strong>
+              <span>Variante micronicho — contenido y ventas con IA</span>
+            </div>
+            <span class="related-tag">Próximo</span>
+          </div>
+          <div class="related-card coming-soon">
+            <span class="related-icon">🤖</span>
+            <div>
+              <strong>Claude + Gemini Bundle</strong>
+              <span>Las 3 IAs principales en un solo pack</span>
+            </div>
+            <span class="related-tag">Próximo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">Copiado al portapapeles</div>
+  <script>
+const STORAGE_KEY = "coco-go-gpt-emp-7d";
+const STORAGE_KEY_LEGACY = "coco-eb-gpt-emp-7d";
+const ACCESS_TOKEN = "COCO-GPT7-2026";
+const ACCESS_SESSION_KEY = "coco-go-access-ok";
+
+function loadProgress() {
+  try {
+    const current = localStorage.getItem(STORAGE_KEY);
+    if (current) return JSON.parse(current);
+    const legacy = localStorage.getItem(STORAGE_KEY_LEGACY);
+    if (legacy) {
+      const parsed = JSON.parse(legacy);
+      saveProgress(parsed);
+      return parsed;
+    }
+    return {};
+  } catch { return {}; }
+}
+
+function saveProgress(data) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (_) {}
+}
+
+function readProgressState() {
+  const progress = {};
+  document.querySelectorAll("[data-day-check]").forEach((input) => {
+    progress[String(input.dataset.dayCheck)] = !!input.checked;
+  });
+  return progress;
+}
+
+function updateProgressUI(progress) {
+  const days = ["1", "2", "3", "4", "5", "6", "7"];
+  const done = days.filter((d) => progress[d]).length;
+  const pct = Math.round((done / 7) * 100);
+  const fill = document.getElementById("progress-fill");
+  const pctEl = document.getElementById("progress-pct");
+  const doneEl = document.getElementById("days-done");
+  const compactPct = document.getElementById("compact-pct");
+  if (fill) {
+    fill.style.width = `${pct}%`;
+    fill.setAttribute("aria-valuenow", String(pct));
+  }
+  if (pctEl) pctEl.textContent = `${pct}%`;
+  if (doneEl) doneEl.textContent = String(done);
+  if (compactPct) compactPct.textContent = `${pct}%`;
+  if (pct === 100 && !updateProgressUI._celebrated) {
+    updateProgressUI._celebrated = true;
+    showToast("🎉 ¡Completaste los 7 días!");
+  }
+}
+updateProgressUI._celebrated = false;
+
+function panelHash(dayId) {
+  if (dayId === "glosario") return "#panel-glosario";
+  if (dayId === "bonus") return "#panel-bonus";
+  return `#panel-${dayId}`;
+}
+
+function dayFromHash() {
+  const id = (location.hash || "#panel-glosario").slice(1);
+  if (id === "panel-glosario") return "glosario";
+  if (id === "panel-bonus") return "bonus";
+  const m = id.match(/^panel-(\d+)$/);
+  return m ? m[1] : "glosario";
+}
+
+function syncPillActive(dayId) {
+  document.querySelectorAll(".day-pill").forEach((pill) => {
+    pill.classList.toggle("active", pill.dataset.day === dayId);
+  });
+}
+
+function showPanel(dayId) {
+  const hash = panelHash(dayId);
+  if (location.hash !== hash) {
+    history.replaceState(null, "", hash);
+  }
+  document.querySelectorAll("[data-panel]").forEach((panel) => {
+    const show = panel.dataset.panel === dayId;
+    panel.classList.toggle("active", show);
+  });
+  syncPillActive(dayId);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  requestAnimationFrame(observeReveals);
+}
+
+function initDayNav() {
+  window.addEventListener("hashchange", () => {
+    showPanel(dayFromHash());
+  });
+  document.querySelectorAll(".day-pill").forEach((pill) => {
+    pill.addEventListener("click", () => {
+      setTimeout(() => showPanel(pill.dataset.day), 0);
+    });
+  });
+}
+
+function initCheckboxes() {
+  const saved = loadProgress();
+  document.querySelectorAll("[data-day-check]").forEach((input) => {
+    const day = String(input.dataset.dayCheck);
+    input.checked = !!(saved[day] || saved[Number(day)]);
+    input.addEventListener("change", () => {
+      const p = readProgressState();
+      saveProgress(p);
+      updateProgressUI(p);
+      if (input.checked) showToast(`✓ Día ${day} completado`);
+    });
+  });
+  updateProgressUI(readProgressState());
+}
+
+function initCopyButtons() {
+  document.querySelectorAll(".btn-copy").forEach((btn) => {
+    if (!btn.dataset.label) btn.dataset.label = btn.textContent.trim();
+    btn.addEventListener("click", async () => {
+      const el = document.getElementById(btn.dataset.target);
+      if (!el) return;
+      const text = el.textContent.trim();
+      try {
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          fallbackCopy(text);
+        }
+        btn.classList.add("copied");
+        btn.textContent = "✓ Copiado";
+        showToast("Copiado al portapapeles");
+        setTimeout(() => {
+          btn.classList.remove("copied");
+          btn.textContent = btn.dataset.label;
+        }, 2000);
+      } catch {
+        if (fallbackCopy(text)) {
+          btn.classList.add("copied");
+          btn.textContent = "✓ Copiado";
+          showToast("Copiado al portapapeles");
+          setTimeout(() => {
+            btn.classList.remove("copied");
+            btn.textContent = btn.dataset.label;
+          }, 2000);
+        } else {
+          showToast("Mantené presionado el texto para copiar");
+        }
+      }
+    });
+  });
+}
+
+function fallbackCopy(text) {
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.setAttribute("readonly", "");
+  ta.style.cssText = "position:fixed;left:-9999px;top:0;opacity:0";
+  document.body.appendChild(ta);
+  ta.select();
+  ta.setSelectionRange(0, text.length);
+  let ok = false;
+  try { ok = document.execCommand("copy"); } catch (_) {}
+  document.body.removeChild(ta);
+  return ok;
+}
+
+function showToast(msg) {
+  const toast = document.getElementById("toast");
+  if (!toast) return;
+  toast.textContent = msg;
+  toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), 2500);
+}
+
+function observeReveals() {
+  document.querySelectorAll(".card.reveal:not(.visible)").forEach((el, i) => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add("visible"), i * 60);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.06 }
+    );
+    observer.observe(el);
+  });
+}
+
+function updateStickyOffsets() {
+  const brand = document.getElementById("brand-bar");
+  if (!brand) return;
+  document.documentElement.style.setProperty("--brand-offset", `${brand.offsetHeight}px`);
+}
+
+function initHeroCollapse() {
+  const hero = document.getElementById("inicio");
+  if (!hero) return;
+
+  const onScroll = () => {
+    const collapsed = window.scrollY > hero.offsetHeight * 0.35;
+    document.body.classList.toggle("hero-collapsed", collapsed);
+    updateStickyOffsets();
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", updateStickyOffsets);
+  onScroll();
+  updateStickyOffsets();
+}
+
+function initGlossaryList() {
+  const list = document.getElementById("concept-list");
+  const search = document.getElementById("glossary-search");
+  const empty = document.getElementById("glossary-empty");
+  if (!list) return;
+
+  const cards = [...list.querySelectorAll("details.concept-card")];
+  let locking = false;
+
+  cards.forEach((card) => {
+    card.addEventListener("toggle", () => {
+      if (locking || !card.open) return;
+      locking = true;
+      cards.forEach((other) => {
+        if (other !== card) other.open = false;
+      });
+      locking = false;
+    });
+  });
+
+  if (!search) return;
+
+  const normalize = (s) => s.toLowerCase().normalize("NFD").replace(/\p{M}/gu, "");
+
+  function filterCards() {
+    const q = normalize(search.value.trim());
+    let visible = 0;
+    cards.forEach((card) => {
+      const text = normalize(card.textContent || "");
+      const show = !q || text.includes(q);
+      card.classList.toggle("is-hidden", !show);
+      if (!show) card.open = false;
+      if (show) visible += 1;
+    });
+    if (empty) empty.hidden = visible > 0;
+  }
+
+  search.addEventListener("input", filterCards);
+}
+
+function initPrintPdf() {
+  const btn = document.getElementById("btn-print-pdf");
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    document.body.classList.add("is-printing");
+    document.querySelectorAll("details.concept-card, details.example").forEach((d) => { d.open = true; });
+    document.querySelectorAll(".concept-card.is-hidden").forEach((c) => c.classList.remove("is-hidden"));
+    showToast("Elegí 'Guardar como PDF' — puede tardar unos segundos");
+    const cleanup = () => document.body.classList.remove("is-printing");
+    window.addEventListener("afterprint", cleanup, { once: true });
+    setTimeout(() => window.print(), 500);
+  });
+}
+
+function initAccessGate() {
+  if (!ACCESS_TOKEN || ACCESS_TOKEN === "COCO-GPT7-2026") return;
+
+  const gate = document.getElementById("access-gate");
+  const input = document.getElementById("access-code-input");
+  const submit = document.getElementById("access-code-submit");
+  const error = document.getElementById("access-gate-error");
+  if (!gate || !input || !submit) return;
+
+  const params = new URLSearchParams(location.search);
+  const fromUrl = (params.get("k") || "").trim();
+  const stored = sessionStorage.getItem(ACCESS_SESSION_KEY) === "1";
+
+  function unlock() {
+    sessionStorage.setItem(ACCESS_SESSION_KEY, "1");
+    document.body.classList.remove("access-locked");
+    gate.hidden = true;
+    if (fromUrl) {
+      params.delete("k");
+      const qs = params.toString();
+      history.replaceState(null, "", `${location.pathname}${qs ? `?${qs}` : ""}${location.hash}`);
+    }
+  }
+
+  function tryCode(raw) {
+    const code = (raw || "").trim();
+    if (code.toUpperCase() === ACCESS_TOKEN.toUpperCase()) {
+      if (error) error.textContent = "";
+      unlock();
+      return true;
+    }
+    if (error) error.textContent = "Código incorrecto. Revisá el email de compra.";
+    return false;
+  }
+
+  if (stored || (fromUrl && tryCode(fromUrl))) return;
+
+  document.body.classList.add("access-locked");
+  gate.hidden = false;
+  submit.addEventListener("click", () => tryCode(input.value));
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") tryCode(input.value);
+  });
+}
+
+function initMobileHint() {
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const hint = document.getElementById("mobile-hint");
+  if (!hint) return;
+
+  if (isIOS) {
+    hint.hidden = false;
+    const cssLoaded = getComputedStyle(document.body).fontFamily.includes("system-ui")
+      || document.styleSheets.length > 0;
+    const link = document.querySelector('link[rel="stylesheet"]');
+    if (link) {
+      link.addEventListener("error", () => { hint.hidden = false; });
+    }
+    requestAnimationFrame(() => {
+      const test = document.querySelector(".brand-bar");
+      if (test && getComputedStyle(test).position !== "sticky") {
+        hint.hidden = false;
+      }
+    });
+  }
+}
+
+function detectBrokenAssets() {
+  const link = document.querySelector('link[href="assets/style.css"]');
+  if (!link) return;
+  const img = new Image();
+  const timeout = setTimeout(() => {
+    const hint = document.getElementById("mobile-hint");
+    if (hint && /iPhone|iPad|Android/i.test(navigator.userAgent)) hint.hidden = false;
+  }, 800);
+  fetch(link.href, { method: "HEAD" }).catch(() => {
+    clearTimeout(timeout);
+    const hint = document.getElementById("mobile-hint");
+    if (hint) hint.hidden = false;
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.documentElement.classList.add("js-ready");
+
+  initAccessGate();
+  initCheckboxes();
+  initCopyButtons();
+  observeReveals();
+  initGlossaryList();
+  initHeroCollapse();
+  initPrintPdf();
+  syncTabsFromHash();
+
+  document.querySelectorAll(".day-pill[for]").forEach((label) => {
+    label.addEventListener("click", () => {
+      const id = label.getAttribute("for");
+      if (id) history.replaceState(null, "", `#${id}`);
+    });
+  });
+});
+
+function syncTabsFromHash() {
+  const hash = (location.hash || "#tab-glosario").slice(1);
+  const tab = document.getElementById(hash);
+  if (tab && tab.classList.contains("tab-input")) tab.checked = true;
+  window.addEventListener("hashchange", () => {
+    const h = (location.hash || "#tab-glosario").slice(1);
+    const el = document.getElementById(h);
+    if (el && el.classList.contains("tab-input")) el.checked = true;
+  });
+}
+</script>
+</body>
+</html>
